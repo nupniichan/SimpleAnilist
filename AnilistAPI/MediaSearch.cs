@@ -30,7 +30,7 @@ namespace AnilistAPI
             try
             {
                 var apiClient = new GraphQLAnilist();
-                var media = await apiClient.MediaPostAsync(query, variables);
+                var media = await apiClient.GetMediaAsync(query, variables);
 
                 Console.WriteLine($"ID: {media.id}");
                 Console.WriteLine($"Title (Romaji): {media.title.romaji}");
@@ -64,7 +64,7 @@ namespace AnilistAPI
             try
             {
                 var apiClient = new GraphQLAnilist();
-                var media = await apiClient.MediaPostAsync(query, variables);
+                var media = await apiClient.GetMediaAsync(query, variables);
 
                 Console.WriteLine($"ID: {media.id}");
                 Console.WriteLine($"Title (Romaji): {media.title.romaji}");

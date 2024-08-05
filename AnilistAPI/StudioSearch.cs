@@ -19,7 +19,7 @@ namespace AnilistAPI
             try
             {
                 var apiClient = new GraphQLAnilist();
-                var staff = await apiClient.StudioPostAsync(query, variables);
+                var staff = await apiClient.GetStudioAsync(query, variables);
 
                 await Console.Out.WriteLineAsync(staff.name);
             }

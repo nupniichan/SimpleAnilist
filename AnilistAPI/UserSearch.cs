@@ -20,7 +20,7 @@ namespace AnilistAPI
             try
             {
                 var apiClient = new GraphQLAnilist();
-                var user = await apiClient.UserPostAsync(query, variables);
+                var user = await apiClient.GetUserAsync(query, variables);
 
                 await Console.Out.WriteLineAsync(user.name);
                 await Console.Out.WriteLineAsync(user.about);

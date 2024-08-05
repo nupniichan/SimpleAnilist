@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using AnilistAPI.Objects.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using AnilistAPI.Objects.Object; // Cập nhật namespace của bạn nếu cần
 
 public class GraphQLAnilist
 {
@@ -16,7 +16,7 @@ public class GraphQLAnilist
         _client = new HttpClient();
     }
 
-    public async Task<Media> MediaPostAsync(string query, object variables)
+    public async Task<T> PostAsync<T>(string query, object variables, string dataField)
     {
         var requestBody = new
         {
@@ -34,116 +34,37 @@ public class GraphQLAnilist
         var responseBody = await response.Content.ReadAsStringAsync();
         var jsonResponse = JObject.Parse(responseBody);
 
-        var mediaJson = jsonResponse["data"]?["Media"];
-        if (mediaJson == null)
+        var dataJson = jsonResponse["data"]?[dataField];
+        if (dataJson == null)
         {
             throw new Exception("Không tìm thấy kết quả phản hồi");
         }
 
-        return mediaJson.ToObject<Media>();
+        return dataJson.ToObject<T>();
     }
-    public async Task<Character> CharacterPostAsync(string query, object variables)
+
+    public Task<Media> GetMediaAsync(string query, object variables)
     {
-        var requestBody = new
-        {
-            query = query,
-            variables = variables
-        };
-
-        var jsonContent = JsonConvert.SerializeObject(requestBody);
-        var httpContent = new StringContent(jsonContent);
-        httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        var response = await _client.PostAsync(_url, httpContent);
-        response.EnsureSuccessStatusCode();
-
-        var responseBody = await response.Content.ReadAsStringAsync();
-        var jsonResponse = JObject.Parse(responseBody);
-
-        var mediaJson = jsonResponse["data"]?["Character"];
-        if (mediaJson == null)
-        {
-            throw new Exception("Không tìm thấy kết quả phản hồi");
-        }
-
-        return mediaJson.ToObject<Character>();
+        return PostAsync<Media>(query, variables, "Media");
     }
-    public async Task<Staff> StaffPostAsync(string query, object variables)
+
+    public Task<Character> GetCharacterAsync(string query, object variables)
     {
-        var requestBody = new
-        {
-            query = query,
-            variables = variables
-        };
-
-        var jsonContent = JsonConvert.SerializeObject(requestBody);
-        var httpContent = new StringContent(jsonContent);
-        httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        var response = await _client.PostAsync(_url, httpContent);
-        response.EnsureSuccessStatusCode();
-
-        var responseBody = await response.Content.ReadAsStringAsync();
-        var jsonResponse = JObject.Parse(responseBody);
-
-        var mediaJson = jsonResponse["data"]?["Staff"];
-        if (mediaJson == null)
-        {
-            throw new Exception("Không tìm thấy kết quả phản hồi");
-        }
-
-        return mediaJson.ToObject<Staff>();
+        return PostAsync<Character>(query, variables, "Character");
     }
-    public async Task<Studio> StudioPostAsync(string query, object variables)
+
+    public Task<Staff> GetStaffAsync(string query, object variables)
     {
-        var requestBody = new
-        {
-            query = query,
-            variables = variables
-        };
-
-        var jsonContent = JsonConvert.SerializeObject(requestBody);
-        var httpContent = new StringContent(jsonContent);
-        httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        var response = await _client.PostAsync(_url, httpContent);
-        response.EnsureSuccessStatusCode();
-
-        var responseBody = await response.Content.ReadAsStringAsync();
-        var jsonResponse = JObject.Parse(responseBody);
-
-        var mediaJson = jsonResponse["data"]?["Studio"];
-        if (mediaJson == null)
-        {
-            throw new Exception("Không tìm thấy kết quả phản hồi");
-        }
-
-        return mediaJson.ToObject<Studio>();
+        return PostAsync<Staff>(query, variables, "Staff");
     }
-    public async Task<User> UserPostAsync(string query, object variables)
+
+    public Task<Studio> GetStudioAsync(string query, object variables)
     {
-        var requestBody = new
-        {
-            query = query,
-            variables = variables
-        };
+        return PostAsync<Studio>(query, variables, "Studio");
+    }
 
-        var jsonContent = JsonConvert.SerializeObject(requestBody);
-        var httpContent = new StringContent(jsonContent);
-        httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        var response = await _client.PostAsync(_url, httpContent);
-        response.EnsureSuccessStatusCode();
-
-        var responseBody = await response.Content.ReadAsStringAsync();
-        var jsonResponse = JObject.Parse(responseBody);
-
-        var mediaJson = jsonResponse["data"]?["User"];
-        if (mediaJson == null)
-        {
-            throw new Exception("Không tìm thấy kết quả phản hồi");
-        }
-
-        return mediaJson.ToObject<User>();
+    public Task<User> GetUserAsync(string query, object variables)
+    {
+        return PostAsync<User>(query, variables, "User");
     }
 }

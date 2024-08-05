@@ -14,7 +14,7 @@
             try
             {
                 var apiClient = new GraphQLAnilist();
-                var character = await apiClient.CharacterPostAsync(query, variables);
+                var character = await apiClient.GetCharacterAsync(query, variables);
 
                 Console.WriteLine(character.name.first);
                 await Console.Out.WriteLineAsync(character.dateOfBirth.month.ToString());
