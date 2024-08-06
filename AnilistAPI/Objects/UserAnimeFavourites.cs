@@ -1,4 +1,6 @@
-﻿namespace AnilistAPI.Objects
+﻿using AnilistAPI.Objects.Object;
+
+namespace AnilistAPI.Objects
 {
     public class UserAnimeFavourites
     {
