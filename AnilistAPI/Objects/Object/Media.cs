@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AnilistAPI.AnilistAPI;
+﻿using AnilistAPI.AnilistAPI;
 using AnilistAPI.AnilistAPI.Enum;
 
 namespace AnilistAPI.Objects.Object

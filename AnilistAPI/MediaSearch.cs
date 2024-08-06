@@ -1,9 +1,4 @@
 ﻿using AnilistAPI.AnilistAPI.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnilistAPI
 {
@@ -41,6 +36,7 @@ namespace AnilistAPI
             {
                 Console.WriteLine("Lỗi: " + e.Message);
                 Console.WriteLine(e.ToString());
+                throw;
             }
         }
         public static async Task SearchMediaName(string name, MediaType mediaType)
@@ -74,6 +70,7 @@ namespace AnilistAPI
             {
                 Console.WriteLine("Lỗi: " + e.Message);
                 Console.WriteLine(e.ToString());
+                throw;
             }
         }
     }

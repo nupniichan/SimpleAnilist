@@ -1,12 +1,4 @@
-﻿using AnilistAPI.AnilistAPI.Enum;
-using AnilistAPI.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnilistAPI
+﻿namespace AnilistAPI
 {
     public class StaffSearch
     {
@@ -30,6 +22,7 @@ namespace AnilistAPI
             {
                 Console.WriteLine("Lỗi: " + e.Message);
                 Console.WriteLine(e.ToString());
+                throw;
             }
         }
     }

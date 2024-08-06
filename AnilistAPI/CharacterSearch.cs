@@ -23,6 +23,7 @@
             {
                 Console.WriteLine("Lỗi: " + e.Message);
                 Console.WriteLine(e.ToString());
+                throw;
             }
         }
     }
