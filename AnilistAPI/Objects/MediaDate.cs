@@ -1,16 +1,17 @@
-﻿
-namespace AnilistAPI.AnilistAPI
+﻿namespace AnilistAPI.Objects
 {
-    public class StartDate
+    public class MediaDate
     {
         public int? year { get; set; }
         public int? month { get; set; }
         public int? day { get; set; }
     }
-    public class EndDate
+
+    public class StartDate : MediaDate
     {
-        public int? year { get; set; }
-        public int? month { get; set; }
-        public int? day { get; set; }
+    }
+
+    public class EndDate : MediaDate
+    {
     }
 }

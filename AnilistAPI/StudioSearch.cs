@@ -4,7 +4,7 @@
     {
         public static async Task SearchStudio(string name)
         {
-            string query = Query.StudioSearchQuery;
+            string query = AniQuery.StudioSearchQuery;
             var variables = new
             {
                 search = name
@@ -12,7 +12,7 @@
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var staff = await apiClient.GetStudioAsync(query, variables);
 
                 await Console.Out.WriteLineAsync(staff.name);

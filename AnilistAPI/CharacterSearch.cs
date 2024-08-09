@@ -4,7 +4,7 @@
     {
         public static async Task SearchCharacter(string name)
         {
-            string query = Query.CharacterSearchQuery;
+            string query = AniQuery.CharacterSearchQuery;
             var variables = new
             {
                 search = name,
@@ -13,7 +13,7 @@
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var character = await apiClient.GetCharacterAsync(query, variables);
 
                 Console.WriteLine(character.name.first);

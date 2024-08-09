@@ -9,11 +9,11 @@ namespace AnilistAPI
             string query = "";
             if (mediaType == AniMediaType.ANIME)
             {
-                query = Query.AnimeIDQuery;
+                query = AniQuery.AnimeIDQuery;
             }
             else
             {
-                query = Query.MangaIDQuery;
+                query = AniQuery.MangaIDQuery;
             }
             var variables = new
             {
@@ -24,7 +24,7 @@ namespace AnilistAPI
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var media = await apiClient.GetMediaAsync(query, variables);
 
                 Console.WriteLine($"ID: {media.id}");
@@ -44,11 +44,11 @@ namespace AnilistAPI
             string query = "";
             if (mediaType == AniMediaType.ANIME)
             {
-                query = Query.AnimeNameQuery;
+                query = AniQuery.AnimeNameQuery;
             }
             else
             {
-                query = Query.MangaNameQuery;
+                query = AniQuery.MangaNameQuery;
             }
             var variables = new
             {
@@ -59,7 +59,7 @@ namespace AnilistAPI
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var media = await apiClient.GetMediaAsync(query, variables);
 
                 Console.WriteLine($"ID: {media.id}");

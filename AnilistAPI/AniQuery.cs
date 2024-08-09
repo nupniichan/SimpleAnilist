@@ -1,6 +1,6 @@
 ﻿namespace AnilistAPI
 {
-    public static class Query
+    public static class AniQuery
     {
         public const string AnimeIDQuery =
         @"query ($id: Int, $type: MediaType, $asHtml: Boolean){

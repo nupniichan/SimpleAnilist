@@ -4,7 +4,7 @@
     {
         public static async Task SearchStaff(string name)
         {
-            string query = Query.StaffSearchQuery;
+            string query = AniQuery.StaffSearchQuery;
             var variables = new
             {
                 search = name,
@@ -13,7 +13,7 @@
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var staff = await apiClient.GetStaffAsync(query, variables);
 
                 await Console.Out.WriteLineAsync(staff.name.first + staff.languageV2);

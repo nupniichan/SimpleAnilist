@@ -3,12 +3,12 @@ using AnilistAPI.Objects.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-public class GraphQLAnilist
+public class AnilistGraphQL
 {
     private readonly string _url = "https://graphql.anilist.co";
     private readonly HttpClient _client;
 
-    public GraphQLAnilist()
+    public AnilistGraphQL()
     {
         _client = new HttpClient();
     }

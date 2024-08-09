@@ -8,7 +8,7 @@ namespace AnilistAPI
     {
         public static async Task SearchUser(string name)
         {
-            string query = Query.UserSearchQuery;
+            string query = AniQuery.UserSearchQuery;
             var variables = new
             {
                 name = name,
@@ -17,7 +17,7 @@ namespace AnilistAPI
 
             try
             {
-                var apiClient = new GraphQLAnilist();
+                var apiClient = new AnilistGraphQL();
                 var user = await apiClient.GetUserAsync(query, variables);
 
                 await Console.Out.WriteLineAsync(user.name);
