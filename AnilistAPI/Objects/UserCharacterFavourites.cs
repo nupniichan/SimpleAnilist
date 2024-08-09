@@ -4,6 +4,6 @@ namespace AnilistAPI.Objects
 {
     public class UserCharacterFavourites
     {
-        public List<Character>? nodes { get; set; }
+        public List<AniCharacter>? nodes { get; set; }
     }
 }

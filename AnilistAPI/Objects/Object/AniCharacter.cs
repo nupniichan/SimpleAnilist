@@ -1,6 +1,6 @@
 ﻿namespace AnilistAPI.Objects.Object
 {
-    public class Character
+    public class AniCharacter
     {
         public CharacterName name { get; set; }
         public string description { get; set; }

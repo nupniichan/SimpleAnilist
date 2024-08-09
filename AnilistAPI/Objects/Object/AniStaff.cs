@@ -1,6 +1,6 @@
 ﻿namespace AnilistAPI.Objects.Object
 {
-    public class Staff
+    public class AniStaff
     {
         public StaffName name { get; set; }
         public string languageV2 { get; set; }

@@ -4,6 +4,6 @@ namespace AnilistAPI.Objects
 {
     public class UserMangaFavourites
     {
-        public List<Media>? nodes { get; set; }
+        public List<AniMedia>? nodes { get; set; }
     }
 }

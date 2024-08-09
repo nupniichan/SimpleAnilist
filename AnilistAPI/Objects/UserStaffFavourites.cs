@@ -4,6 +4,6 @@ namespace AnilistAPI.Objects
 {
     public class UserStaffFavourites
     {
-        public List<Staff>? nodes { get; set; }
+        public List<AniStaff>? nodes { get; set; }
     }
 }

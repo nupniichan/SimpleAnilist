@@ -40,28 +40,28 @@ public class GraphQLAnilist
         return dataJson.ToObject<T>();
     }
 
-    public Task<Media> GetMediaAsync(string query, object variables)
+    public Task<AniMedia> GetMediaAsync(string query, object variables)
     {
-        return PostAsync<Media>(query, variables, "Media");
+        return PostAsync<AniMedia>(query, variables, "Media");
     }
 
-    public Task<Character> GetCharacterAsync(string query, object variables)
+    public Task<AniCharacter> GetCharacterAsync(string query, object variables)
     {
-        return PostAsync<Character>(query, variables, "Character");
+        return PostAsync<AniCharacter>(query, variables, "Character");
     }
 
-    public Task<Staff> GetStaffAsync(string query, object variables)
+    public Task<AniStaff> GetStaffAsync(string query, object variables)
     {
-        return PostAsync<Staff>(query, variables, "Staff");
+        return PostAsync<AniStaff>(query, variables, "Staff");
     }
 
-    public Task<Studio> GetStudioAsync(string query, object variables)
+    public Task<AniStudio> GetStudioAsync(string query, object variables)
     {
-        return PostAsync<Studio>(query, variables, "Studio");
+        return PostAsync<AniStudio>(query, variables, "Studio");
     }
 
-    public Task<User> GetUserAsync(string query, object variables)
+    public Task<AniUser> GetUserAsync(string query, object variables)
     {
-        return PostAsync<User>(query, variables, "User");
+        return PostAsync<AniUser>(query, variables, "User");
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AnilistAPI.Objects.Object
 {
-    public class User
+    public class AniUser
     {
         public int id { get; set; }
         public string name { get; set; }

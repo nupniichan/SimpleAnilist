@@ -4,10 +4,10 @@ namespace AnilistAPI
 {
     public class MediaSearch
     {
-        public static async Task SearchMediaID(int id, MediaType mediaType)
+        public static async Task SearchMediaID(int id, AniMediaType mediaType)
         {
             string query = "";
-            if (mediaType == MediaType.ANIME)
+            if (mediaType == AniMediaType.ANIME)
             {
                 query = Query.AnimeIDQuery;
             }
@@ -18,7 +18,7 @@ namespace AnilistAPI
             var variables = new
             {
                 id = id,
-                type = Enum.GetName(typeof(MediaType), mediaType),
+                type = Enum.GetName(typeof(AniMediaType), mediaType),
                 asHtml = true
             };
 
@@ -39,10 +39,10 @@ namespace AnilistAPI
                 throw;
             }
         }
-        public static async Task SearchMediaName(string name, MediaType mediaType)
+        public static async Task SearchMediaName(string name, AniMediaType mediaType)
         {
             string query = "";
-            if (mediaType == MediaType.ANIME)
+            if (mediaType == AniMediaType.ANIME)
             {
                 query = Query.AnimeNameQuery;
             }
@@ -53,7 +53,7 @@ namespace AnilistAPI
             var variables = new
             {
                 search = name,
-                type = Enum.GetName(typeof(MediaType), mediaType),
+                type = Enum.GetName(typeof(AniMediaType), mediaType),
                 asHtml = true
             };
 
