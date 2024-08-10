@@ -34,19 +34,19 @@ var client = new AnilistGraphQL();
 var anime = await client.GetMediaAsync(AniQuery.AnimeIDQuery, new { id = "104198", asHtml = true });
 
 // Get anime by name 
-var anime = await client.GetMediaAsync(Query.AnimeNameQuery, new { name = "Is the order rabbit? Bloom", type = MediaType.ANIME });
+var anime = await client.GetMediaAsync(AniQuery.AnimeNameQuery, new { search = "Is the order rabbit? Bloom", asHtml = true });
 
 // Get manga by id
-var manga = await client.GetMediaAsync(AniQuery.MangaIDQuery, new { id = 79835 ,asHtml = true });
+var manga = await client.GetMediaAsync(AniQuery.MangaIDQuery, new { id = 79835 , asHtml = true });
 
 // Get manga by name
-var manga = await client.GetMediaAsync(AniQuery.MangaNameQuery, new { search = "Is the order rabbit?" ,asHtml = true });
+var manga = await client.GetMediaAsync(AniQuery.MangaNameQuery, new { search = "Is the order rabbit?" , asHtml = true });
 
 // Get character by name
 var character = await client.GetCharacterAsync(AniQuery.CharacterSearchQuery, new { search = "Chino Kafuu", asHtml = true });
 
 // Get staff by name
-var staff = await client.GetStaffAsync(AniQuery.StaffSearchQuery, new { search = "Koi" ,asHtml = true });
+var staff = await client.GetStaffAsync(AniQuery.StaffSearchQuery, new { search = "Koi" , asHtml = true });
 
 // Get studio by name
 var studio = await client.GetStudioAsync(AniQuery.StudioSearchQuery, new { search = "Encourage Films", asHtml = true });
@@ -148,7 +148,6 @@ public static class Query
 
 ```C#
 using AnilistAPI;
-using System;
 
 class Program
 {
@@ -158,7 +157,7 @@ class Program
 
         try
         {
-            var anime = await client.GetMediaAsync(Query.AnimeNameQuery, new { name = "Is the order rabbit? Bloom", type = MediaType.ANIME });
+            var anime = await client.GetMediaAsync(AniQuery.AnimeNameQuery, new { search = "Is the order rabbit? Bloom", asHtml = true });
 
             Console.WriteLine($"ID: {anime.id}");
             Console.WriteLine($"Title: {anime.title.romaji}");
