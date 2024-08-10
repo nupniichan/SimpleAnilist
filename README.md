@@ -1,4 +1,4 @@
-## Simple Anilist API
+## Simple Anilist 
 
 This is a simple C# library for interacting with the Anilist API (it just take some basic information). As it's not yet published on NuGet, you'll need to include the project in your solution to use it. But i will publish to nuget soon so please stand by...
 
@@ -19,40 +19,40 @@ This is a simple C# library for interacting with the Anilist API (it just take s
 
 Now that you have included the project, you can start using the Anilist API Client. 
 
-**1. Initialize AnilistClient:**
+**1. Initialize AnilistGraphQL:**
 
 ```C#
 using AnilistAPI;
 
-var client = new AnilistClient();
+var client = new AnilistGraphQL();
 ```
 
 **2. Make Queries:**
 
 ```C#
 // Get anime by ID 
-var anime = await client.GetMediaAsync(Query.AnimeIDQuery, new { id = 104198, type = MediaType.ANIME });
+var anime = await client.GetMediaAsync(AniQuery.AnimeIDQuery, new { id = "104198", asHtml = true });
 
 // Get anime by name 
 var anime = await client.GetMediaAsync(Query.AnimeNameQuery, new { name = "Is the order rabbit? Bloom", type = MediaType.ANIME });
 
 // Get manga by id
-var manga = await client.GetMediaAsync(Query.MangaIDQuery, new { id = 79835, type = MediaType.MANGA });
+var manga = await client.GetMediaAsync(AniQuery.MangaIDQuery, new { id = 79835 ,asHtml = true });
 
 // Get manga by name
-var manga = await client.GetMediaAsync(Query.MangaNameQuery, new { search = "Is the order rabbit?", type = MediaType.MANGA });
+var manga = await client.GetMediaAsync(AniQuery.MangaNameQuery, new { search = "Is the order rabbit?" ,asHtml = true });
 
 // Get character by name
-var character = await client.GetCharacterAsync(Query.CharacterSearchQuery, new { search = "Chino Kafuu" });
+var character = await client.GetCharacterAsync(AniQuery.CharacterSearchQuery, new { search = "Chino Kafuu", asHtml = true });
 
 // Get staff by name
-var staff = await client.GetStaffAsync(Query.StaffSearchQuery, new { search = "Koi" });
+var staff = await client.GetStaffAsync(AniQuery.StaffSearchQuery, new { search = "Koi" ,asHtml = true });
 
 // Get studio by name
-var studio = await client.GetStudioAsync(Query.StudioSearchQuery, new { search = "Encourage Films" });
+var studio = await client.GetStudioAsync(AniQuery.StudioSearchQuery, new { search = "Encourage Films", asHtml = true });
 
 // Get user by name
-var user = await client.GetUserAsync(Query.UserSearchQuery, new { name = "nupniichan" });
+var user = await client.GetUserAsync(AniQuery.UserSearchQuery, new { name = "nupniichan", asHtml = true });
 ```
 
 **3. Access Data:**
@@ -60,7 +60,7 @@ var user = await client.GetUserAsync(Query.UserSearchQuery, new { name = "nupnii
 You can access the returned data through the properties of the respective objects like:
 
 ```C#
-    public class Character
+    public class AniCharacter
     {
         public CharacterName name { get; set; }
         public string description { get; set; }
@@ -70,7 +70,7 @@ You can access the returned data through the properties of the respective object
         public string siteUrl { get; set; }
     }
 
-    public class Media
+    public class AniMedia
     {
         public int id { get; set; }
         public int idMal { get; set; }
@@ -96,7 +96,7 @@ You can access the returned data through the properties of the respective object
         public AiringSchedule airingSchedule { get; set; }
     }
 
-    public class Staff
+    public class AniStaff
     {
         public StaffName name { get; set; }
         public string languageV2 { get; set; }
@@ -108,13 +108,13 @@ You can access the returned data through the properties of the respective object
         public string homeTown { get; set; }
     }
 
-    public class Studio
+    public class AniStudio
     {
         public string name { get; set; }
         public string siteUrl { get; set; }
     }
 
-    public class User
+    public class AniUser
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -154,11 +154,11 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var client = new AnilistClient();
+        var client = new AnilistGraphQL();
 
         try
         {
-            var anime = await client.GetMediaAsync(Query.AnimeNameQuery, new { search = "Is the order rabbit?", type = MediaType.ANIME });
+            var anime = await client.GetMediaAsync(Query.AnimeNameQuery, new { name = "Is the order rabbit? Bloom", type = MediaType.ANIME });
 
             Console.WriteLine($"ID: {anime.id}");
             Console.WriteLine($"Title: {anime.title.romaji}");
