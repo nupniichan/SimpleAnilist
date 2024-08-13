@@ -4,7 +4,19 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        // Test if my code can get my anilist profile
-        await CharacterSearch.SearchCharacter("chino kafuu");
+        // Example code
+        var client = new AnilistGraphQL();
+        try
+        {
+            var anime = await client.GetMediaAsync(AniQuery.AnimeNameQuery, new { search = "Is the order rabbit? Bloom", asHtml = true });
+
+            Console.WriteLine($"ID: {anime.id}");
+            Console.WriteLine($"Title: {anime.title.romaji}");
+            Console.WriteLine($"Description: {anime.description}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 }
